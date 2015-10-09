@@ -1,18 +1,14 @@
 '''
 The MIT License (MIT)
-
 Copyright (c) 2015 Olivier Devoisin
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,18 +20,15 @@ SOFTWARE.
 
 import math
 
-
 def largest_triangle_three_buckets(data, threshold):
     """
     Return a downsampled version of data.
-
     Parameters
     ----------
     data: list of lists
         data must be formated this way: [[x,y], [x,y], [x,y], ...]
     threshold: int
         threshold must be >= 2 and <= to the len of data
-
     Returns
     -------
     data, but downsampled using threshold
@@ -63,8 +56,8 @@ def largest_triangle_three_buckets(data, threshold):
         # Calculate point average for next bucket (containing c)
         avg_x = 0
         avg_y = 0
-        avg_range_start = math.floor((i+1)*every) + 1
-        avg_range_end = math.floor((i+2)*every) + 1
+        avg_range_start = int(math.floor((i+1)*every) + 1)
+        avg_range_end = int(math.floor((i+2)*every) + 1)
         avg_rang_end = avg_range_end if avg_range_end < len(data) else len(data)
 
         avg_range_length = avg_rang_end - avg_range_start
@@ -78,8 +71,8 @@ def largest_triangle_three_buckets(data, threshold):
         avg_y /= avg_range_length
 
         # Get the range for this bucket
-        range_offs = math.floor((i+0)*every) + 1
-        range_to = math.floor((i+1)*every) + 1
+        range_offs = int(math.floor((i+0)*every) + 1)
+        range_to = int(math.floor((i+1)*every) + 1)
 
         # Point a
         point_ax = data[a][0]
@@ -89,7 +82,8 @@ def largest_triangle_three_buckets(data, threshold):
 
         while range_offs < range_to:
             # Calculate triangle area over three buckets
-            area = math.fabs((point_ax - avg_x)*(data[range_offs][1] - point_ay) - (point_ax - data[range_offs][0])*(avg_y-point_ay))*0.5
+            area = math.fabs((point_ax - avg_x)*(data[range_offs][1] - point_ay) -
+                             (point_ax - data[range_offs][0])*(avg_y-point_ay))*0.5
             if area > max_area:
                 max_area = area
                 max_area_point = data[range_offs]
