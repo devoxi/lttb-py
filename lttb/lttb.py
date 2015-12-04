@@ -31,7 +31,6 @@ class LttbException(Exception):
 
 def largest_triangle_three_buckets(data, threshold):
     """
-    https://github.com/devoxi/lttb-py/blob/master/lttb/lttb.py
     Return a downsampled version of data.
     Parameters
     ----------
@@ -43,8 +42,6 @@ def largest_triangle_three_buckets(data, threshold):
     Returns
     -------
     data, but downsampled using threshold
-
-    (This copy modified to work on Python 2.5)
     """
 
     # Check if data and threshold are valid
