@@ -11,5 +11,6 @@ The first chart contains 7500 points, and the downsampled one 500 points :
 ![alt text](sampled.png "source")  
 
 ### Usage
+* Include `lttb.py` into your project and call the function there
 * You can use run.sh to generate and produce the demo graph
 
